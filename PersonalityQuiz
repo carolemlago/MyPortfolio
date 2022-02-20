@@ -1,0 +1,143 @@
+
+# Buzzfeed Quiz: What's your mood genre?
+
+# Greet the User
+# Tell user what the quiz is about
+# Present list of choices (Rock, Pop, Jazz , Classical)
+
+def greeting():
+    print("Hey there! \n\n Welcome to your mood genre quizz! \n\n Is your mood Rock, Pop, Jazz or Classical? \n\n We'll discover in a minute...\n\n Are you ready?\n\n Let's go!\n")
+  
+  # Ask user their name + print Welcome
+    name = input("Enter your name: ")
+    name = name.title()
+    print ("Welcome " + name + "!\n\n")
+    return(name) 
+
+name = greeting()
+#Call the function
+
+# Create array of questions and stored into a list 
+  
+question_list = [
+  "What is your favorite time of the day?\n(A) Night\n(B) Anytime\n(C) Afternoon\n(D) Morning\n\n> ",
+  "Which one of these songs would you play right now?\n(A)(I Can't Get No) Satisfaction by The Rolling Stones\n(B) Ghost by Justin Bieber \n(C) So What by Miles Davis\n(D) Symphony no. 5 by Beethoven\n\n> ",
+  "What is your go-to drink?\n(A) Coffee\n(B) Kombucha\n(C) Smoothie\n(D) Tea\n\n> ", 
+  "What adjective describes you best?\n(A) Authentic\n(B) Happy\n(C) Intense\n(D) Calm\n\n> ",  
+  "Your perfect weekend is:\n(A) Musical Concert\n(B) Club with friends\n(C) Movie and Dinner\n(D) Museum\n\n> "
+]
+# Dictionary with key:value pair of letters (choices) and an integer (initially zero)
+options = {
+  'A': 0,
+  'B': 0,
+  'C': 0,
+  'D': 0
+}
+
+
+# Function to get user's input and store in variable answer
+def get_answers(options):
+  
+  
+  # Loop over each question and take input
+  for question in question_list:
+    while True:
+      answer = input(question)
+      answer = answer.upper()
+      
+     # Statement to store answer (user's input) in dictionary options assigning value to each key
+      if answer == 'A':
+        options['A'] += 1
+        break
+      elif answer == 'B':
+        options['B'] += 1
+        break
+      elif answer == 'C':
+        options['C'] += 1
+        break
+      elif answer == 'D':
+        options['D'] += 1
+        break
+      else:
+        print("Invalid response")
+        
+        
+        
+  return(options)
+  
+ # To make sure the user go over the quiz again     
+while True:
+  options = {
+  'A': 0,
+  'B': 0,
+  'C': 0,
+  'D': 0
+  }  
+  
+  options = get_answers(options) 
+  
+
+
+  print("\nThe results are...\n")
+  
+  # countdown for answers (let's make it dramatic)
+  import time
+  
+  timer = 5
+  
+  while timer > 0:
+    print(timer, "...")
+    time.sleep(1)
+    timer = timer - 1
+    
+  # Count answer type and print result
+        
+    def result(options):
+      #if more than one answer A, result should be Rock
+      # print definition
+      if options['A'] >= 2:
+        print(f"\n{name}, your mood is Rock: rebellious, authentic, and energetic!")
+         
+        #elif more than one answer B 
+         # result should be Pop
+         # print definition
+  
+      elif options['B'] >= 2:
+        print(f"\n{name}, your mood is Pop: happy, eclectic, and upbeat!")
+  
+         # elif more than one answer B 
+         # result should be Jazz
+         # print definition
+        
+      elif options['C'] >= 2:
+        print(f"\n{name}, your mood is Jazz: spontaneous, lively, sophisticated!")
+  
+         #elif inputs [D] >= 2
+         # result should be Classical
+         # print definition
+      else:
+        print(f"\n{name}, your mood is Classical: formal, calm, collected!")
+  
+  # Call the function
+  result(options)
+  
+    
+  
+  
+  #ask user "play again?"
+  print("\nWant to play again? Y or N")
+  want_to_play = input ("> ")
+  want_to_play = want_to_play.upper()
+  
+  #if answer is yes, run test again
+  #if answer is no, exit
+  if want_to_play == "Y":
+      print("I knew you'd say that. Here we go again!\n\n")
+      continue
+    
+    #print Goodbye message
+  if want_to_play == "N":
+      print("Bye!")
+      break
+
+
